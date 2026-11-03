@@ -23,8 +23,8 @@ Tested on Windows 11, Anaconda Python 3.13, NVIDIA RTX 3050 Laptop GPU (4 GB). E
 `results/00_environment.json`.
 
 ```powershell
-git clone <this repository>
-cd retrieval_project
+git clone https://github.com/abrarahmedb4u/coco-image-text-retrieval.git
+cd coco-image-text-retrieval
 pip install torch==2.12.0 torchvision==0.27.0 --index-url https://download.pytorch.org/whl/cu126
 pip install -r requirements.txt
 python -c "import torch; print(torch.cuda.is_available())"   # should print True (CPU also works, slower)

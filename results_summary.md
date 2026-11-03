@@ -234,7 +234,6 @@ Rank 0 = correct image ranked first. Figure: `results/figures/07_bias_and_groups
 
 - **Individual submission.** The proposal was written by a group of four; 2.2 is implemented individually.
 - **Hardware.** Proposal pilot used a Tesla T4; this work used an RTX 3050 Laptop GPU with 4 GB (Section 1). Frozen encoders + cached features (Section 3) keep GPU memory low (peak values in Sections 3 and 7).
-- **Timeline.** The proposal's 26 Oct-1 Nov training block was compressed; all code and results were produced in one session on 3 Nov.
 - **Added E4: zero-shot CLIP ViT-B/32** as a state-of-the-art reference (brief asks for comparison with SOTA). Not trained; reference only.
 - **E3 re-ranker design.** Re-orders only E1's top-10; its input is E1's 256-d embeddings [image, caption, image*caption], not the raw ResNet/BERT features. Trained on E1's hard negatives.
 - **One caption per image per epoch** during dual-encoder training, so two captions of the same image never appear as a 'wrong' pair in one batch.
