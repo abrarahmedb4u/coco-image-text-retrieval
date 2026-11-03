@@ -106,7 +106,8 @@ add("|---|---|---|---|---|")
 for r in rows("01_split_summary.csv"):
     add(f"| {r['split']} | {r['n_images']} | {r['n_captions']} | {r['caption_words_mean']} | {src('01_split_summary.csv')} |")
 add("")
-add("Licence audit " + src("01_license_counts.csv") + " (licence names mapped from COCO licence IDs):")
+add("Licence audit " + src("01_license_counts.csv") + " (licence names mapped from COCO licence IDs; "
+    "verified against the official `annotations/captions_val2017.json`):")
 add("")
 add("| licence | train | val | test | total |")
 add("|---|---|---|---|---|")
@@ -249,6 +250,7 @@ for item in [
     "**Individual submission.** The proposal was written by a group of four; 2.2 is implemented individually.",
     "**Hardware.** Proposal pilot used a Tesla T4; this work used an RTX 3050 Laptop GPU with 4 GB (Section 1). "
     "Frozen encoders + cached features (Section 3) keep GPU memory low (peak values in Sections 3 and 7).",
+    "**Timeline.** The proposal's 26 Oct-1 Nov training block was compressed; all code and results were produced in one session on 3 Nov.",
     "**Added E4: zero-shot CLIP ViT-B/32** as a state-of-the-art reference (brief asks for comparison with SOTA). "
     "Not trained; reference only.",
     "**E3 re-ranker design.** Re-orders only E1's top-10; its input is E1's 256-d embeddings "
@@ -278,7 +280,9 @@ for item in [
     "CLIP encode times in `results/05_clip.json` include model loading and a background download; they are not speed measurements. "
     "CLIP's ms/query in Section 7 covers scoring only (embeddings precomputed).",
     "Whether CLIP's web pretraining data overlaps COCO images is unknown; its numbers may be optimistic for that reason.",
-    "COCO licence names were mapped from licence IDs 1-8 as listed in the official COCO 2017 annotation file; verify there.",
+    "COCO licence names: VERIFIED. The names for licence IDs 1-7 (all IDs present in this data) were checked "
+    "against the `licenses` field of the official `annotations/captions_val2017.json` and match "
+    "`results/01_license_counts.csv`.",
     "Gender groups are defined by words in captions (including pronouns), not by who is in the image; "
     "this cannot establish demographic fairness (as the proposal states).",
     "Scene groups overlap (a caption can match several) and are keyword-based approximations.",

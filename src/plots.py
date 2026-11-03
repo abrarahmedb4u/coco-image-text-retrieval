@@ -80,25 +80,25 @@ def plot_06():
     colors = {"E1": BLUE, "E2": ORANGE, "E3": "#55A868", "E4": "#8172B2"}
     labels = {"E1": "E1 InfoNCE", "E2": "E2 Triplet", "E3": "E3 E1 + MLP re-ranker", "E4": "E4 CLIP zero-shot (ref.)"}
     ks = ["R@1", "R@5", "R@10"]
-    fig, axes = plt.subplots(1, 2, figsize=(12, 4.2), sharey=True)
-    for ax, (direction, title) in zip(axes, (("i2t", "(a) Image → text"), ("t2i", "(b) Text → image"))):
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.8), sharey=True)
+    for ax, (direction, title) in zip(axes, (("i2t", "(a) Image \u2192 text"), ("t2i", "(b) Text \u2192 image"))):
         x = np.arange(len(ks))
         width = 0.2
         for i, (_, r) in enumerate(s.iterrows()):
             means = [r[f"{direction}_{k}_mean"] for k in ks]
             stds = [0 if pd.isna(r[f"{direction}_{k}_std"]) else r[f"{direction}_{k}_std"] for k in ks]
             bars = ax.bar(x + (i - 1.5) * width, means, width, yerr=stds, capsize=3,
-                          color=colors[r["code"]], label=labels[r["code"]])
+                          color=colors[r["code"]], label=labels[r["code"]], zorder=2)
             ax.bar_label(bars, fmt="%.1f", fontsize=7, padding=2)
-        ax.plot(x, [rb[f"{direction}_{k}"] for k in ks], "k_", markersize=25, label="random ranking")
-        ax.axhline(10, color="grey", linestyle=":", linewidth=1)
-        ax.axhline(25, color="grey", linestyle="--", linewidth=1)
+        ax.plot(x, [rb[f"{direction}_{k}"] for k in ks], "k_", markersize=25, label="random ranking", zorder=3)
+        # Target lines are drawn behind the bars and named in the legend (no text labels on the plot).
+        ax.axhline(10, color="grey", linestyle=":", linewidth=1.2, zorder=1, label="proposal target R@1 (10%)")
+        ax.axhline(25, color="grey", linestyle="--", linewidth=1.2, zorder=1, label="proposal target R@5 (25%)")
         ax.set(title=title, xticks=x, xticklabels=ks, ylabel="recall on 500-image test set (%)", ylim=(0, 105))
-    axes[0].text(2.45, 11, "target R@1", fontsize=7, color="grey", ha="right")
-    axes[0].text(2.45, 26, "target R@5", fontsize=7, color="grey", ha="right")
-    axes[1].legend(loc="upper left", fontsize=8)
-    fig.suptitle("Test retrieval (mean ± sd over 3 seeds; E4 single deterministic run)")
-    fig.tight_layout()
+    handles, names = axes[0].get_legend_handles_labels()
+    fig.legend(handles, names, loc="lower center", ncol=4, fontsize=8, frameon=False)
+    fig.suptitle("Test retrieval (mean \u00b1 sd over 3 seeds; E4 single deterministic run)")
+    fig.tight_layout(rect=(0, 0.1, 1, 1))
     save_figure(fig, config.FIGURES / "06_test_recall.png")
     plt.close(fig)
 
@@ -109,7 +109,7 @@ def plot_07():
     labels = {"E1": "E1 InfoNCE", "E2": "E2 Triplet", "E3": "E3 re-ranker", "E4": "E4 CLIP (ref.)"}
     audit = pd.read_csv(config.RESULTS / "07_gender_audit.csv")
     scenes = pd.read_csv(config.RESULTS / "07_scene_groups.csv")
-    fig, axes = plt.subplots(1, 2, figsize=(13, 4.2), gridspec_kw={"width_ratios": [1, 1.6]})
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5), gridspec_kw={"width_ratios": [1, 1.4]})
 
     groups = ["male terms", "female terms", "both", "neither"]
     x = np.arange(len(groups))
@@ -117,22 +117,27 @@ def plot_07():
         a = audit[audit["code"] == code].set_index("gender_group").reindex(groups)
         axes[0].bar(x + (i - 1.5) * 0.2, a["R@5"], 0.2, color=colors[code], label=labels[code])
     n = audit[audit["code"] == "E1"].set_index("gender_group").reindex(groups)["n_queries"]
-    axes[0].set(title="(a) Text → image R@5 by gendered words in the query", ylabel="R@5 on test (%)",
-                xticks=x, xticklabels=[f"{g}\n(n={int(c)})" for g, c in zip(groups, n)], ylim=(0, 100))
-    axes[0].legend(fontsize=8, loc="lower right")
+    axes[0].set(title="(a) By gendered words in the query", ylabel="text \u2192 image R@5 on test (%)",
+                xlabel="query group (n = test captions)",
+                xticks=x, xticklabels=[f"{g}\nn={int(c)}" for g, c in zip(groups, n)], ylim=(0, 100))
 
     names = list(dict.fromkeys(scenes["scene_group"]))
+    short = {"vehicles/street": "vehicles/\nstreet", "indoor rooms": "indoor\nrooms"}
     x = np.arange(len(names))
     for i, code in enumerate(["E1", "E2", "E3", "E4"]):
         s = scenes[scenes["code"] == code].set_index("scene_group").reindex(names)
         axes[1].bar(x + (i - 1.5) * 0.2, s["R@5"], 0.2, color=colors[code], label=labels[code])
     s1 = scenes[scenes["code"] == "E1"].set_index("scene_group").reindex(names)
-    axes[1].set(title="(b) Text → image R@5 by scene keyword group", ylabel="R@5 on test (%)", xticks=x,
-                xticklabels=[f"{g}\n(test n={int(t)}; {p:.1f}% of train)" for g, t, p in
+    axes[1].set(title="(b) By scene keyword group", ylabel="text \u2192 image R@5 on test (%)",
+                xlabel="scene group (n = test captions; % = share of training captions)", xticks=x,
+                xticklabels=[f"{short.get(g, g)}\nn={int(t)}\n{p:.1f}%" for g, t, p in
                              zip(names, s1["n_test_queries"], s1["share_of_train_captions_pct"])], ylim=(0, 100))
-    axes[1].tick_params(axis="x", labelsize=8)
+    for ax in axes:
+        ax.tick_params(axis="x", labelsize=9)
+    handles, lab = axes[0].get_legend_handles_labels()
+    fig.legend(handles, lab, loc="lower center", ncol=4, fontsize=9, frameon=False)
     fig.suptitle("Bias and scene-group audit on the test set (E1-E3: mean over 3 seeds)")
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0.06, 1, 1))
     save_figure(fig, config.FIGURES / "07_bias_and_groups.png")
     plt.close(fig)
 

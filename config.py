@@ -26,7 +26,8 @@ N_TEST = 500                      # train = all remaining images
 INVALID_CAPTION_PATTERNS = ["there is no image here"]
 
 # COCO licence IDs -> names, from the "licenses" field of the official COCO
-# 2017 annotation file (cocodataset.org). Used only for the licence audit.
+# 2017 annotation file (cocodataset.org). IDs 1-7 verified against
+# annotations/captions_val2017.json. Used only for the licence audit.
 COCO_LICENSES = {
     1: "CC BY-NC-SA 2.0",
     2: "CC BY-NC 2.0",

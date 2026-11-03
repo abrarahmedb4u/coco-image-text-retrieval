@@ -51,7 +51,7 @@ Settings `results/00_config.json` (copied from `config.py`):
 | val | 500 | 2499 | 10.44 | `results/01_split_summary.csv` |
 | test | 500 | 2498 | 10.41 | `results/01_split_summary.csv` |
 
-Licence audit `results/01_license_counts.csv` (licence names mapped from COCO licence IDs):
+Licence audit `results/01_license_counts.csv` (licence names mapped from COCO licence IDs; verified against the official `annotations/captions_val2017.json`):
 
 | licence | train | val | test | total |
 |---|---|---|---|---|
@@ -234,6 +234,7 @@ Rank 0 = correct image ranked first. Figure: `results/figures/07_bias_and_groups
 
 - **Individual submission.** The proposal was written by a group of four; 2.2 is implemented individually.
 - **Hardware.** Proposal pilot used a Tesla T4; this work used an RTX 3050 Laptop GPU with 4 GB (Section 1). Frozen encoders + cached features (Section 3) keep GPU memory low (peak values in Sections 3 and 7).
+- **Timeline.** The proposal's 26 Oct-1 Nov training block was compressed; all code and results were produced in one session on 3 Nov.
 - **Added E4: zero-shot CLIP ViT-B/32** as a state-of-the-art reference (brief asks for comparison with SOTA). Not trained; reference only.
 - **E3 re-ranker design.** Re-orders only E1's top-10; its input is E1's 256-d embeddings [image, caption, image*caption], not the raw ResNet/BERT features. Trained on E1's hard negatives.
 - **One caption per image per epoch** during dual-encoder training, so two captions of the same image never appear as a 'wrong' pair in one batch.
@@ -250,7 +251,7 @@ Rank 0 = correct image ranked first. Figure: `results/figures/07_bias_and_groups
 - E3 i2t R@10 differs slightly from E1 in some seeds although re-ranking cannot change top-10 membership. Likely cause (not verified): exact score ties from identical caption texts at the top-10 boundary - E1's pessimistic tie rule counts them against the model, while E3's top-10 shortlist can include the correct item.
 - CLIP encode times in `results/05_clip.json` include model loading and a background download; they are not speed measurements. CLIP's ms/query in Section 7 covers scoring only (embeddings precomputed).
 - Whether CLIP's web pretraining data overlaps COCO images is unknown; its numbers may be optimistic for that reason.
-- COCO licence names were mapped from licence IDs 1-8 as listed in the official COCO 2017 annotation file; verify there.
+- COCO licence names: VERIFIED. The names for licence IDs 1-7 (all IDs present in this data) were checked against the `licenses` field of the official `annotations/captions_val2017.json` and match `results/01_license_counts.csv`.
 - Gender groups are defined by words in captions (including pronouns), not by who is in the image; this cannot establish demographic fairness (as the proposal states).
 - Scene groups overlap (a caption can match several) and are keyword-based approximations.
 
