@@ -1,0 +1,5 @@
+code,method,n_seeds,i2t_R@1_mean,i2t_R@1_std,i2t_R@5_mean,i2t_R@5_std,i2t_R@10_mean,i2t_R@10_std,i2t_MRR_mean,i2t_MRR_std,i2t_median_rank_mean,i2t_median_rank_std,t2i_R@1_mean,t2i_R@1_std,t2i_R@5_mean,t2i_R@5_std,t2i_R@10_mean,t2i_R@10_std,t2i_MRR_mean,t2i_MRR_std,t2i_median_rank_mean,t2i_median_rank_std,rsum_mean,rsum_std,meets_proposal_targets
+E1,E1 InfoNCE,3,33.133,1.629,67.067,0.808,78.4,1.0,0.481,0.008,3.0,0.0,26.9,0.577,62.757,1.666,78.887,0.727,0.431,0.008,3.333,0.577,347.143,3.372,True
+E2,E2 Triplet (hardest negative),3,30.933,1.007,62.2,1.732,76.933,1.514,0.457,0.009,3.0,0.0,25.047,0.757,60.53,0.84,76.18,0.25,0.411,0.004,4.0,0.0,331.823,3.376,True
+E3,E3 E1 + concat-MLP re-ranker,3,30.0,2.835,64.2,0.8,78.467,1.007,0.457,0.016,3.0,0.0,21.763,3.015,59.02,3.48,78.887,0.727,0.387,0.03,4.333,0.577,332.337,9.087,True
+E4,E4 CLIP ViT-B/32 zero-shot (reference),1,72.6,,93.4,,97.2,,0.816,,1.0,,56.49,,86.87,,94.72,,0.697,,1.0,,501.28,,True

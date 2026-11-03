@@ -1,0 +1,3 @@
+code,method,train_probe_rsum_mean,val_rsum_mean,test_rsum_mean,train_minus_test_rsum,val_minus_test_rsum
+E1,E1 InfoNCE,539.81,363.96,347.14,192.67,16.82
+E2,E2 Triplet (hardest negative),526.72,347.61,331.82,194.89,15.78

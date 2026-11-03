@@ -1,0 +1,18 @@
+{
+  "python": "3.13.5",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "torch": "2.12.0+cu126",
+  "cuda_available": true,
+  "torch_cuda_build": "12.6",
+  "gpu_name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "gpu_total_memory_gb": 4.0,
+  "libraries": {
+    "datasets": "4.8.5",
+    "matplotlib": "3.10.0",
+    "pandas": "2.2.3",
+    "PIL": "11.1.0",
+    "torch": "2.12.0+cu126",
+    "torchvision": "0.27.0+cu126",
+    "transformers": "5.8.1"
+  }
+}

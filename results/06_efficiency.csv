@@ -1,0 +1,5 @@
+code,trainable_parameters,train_seconds_mean,train_peak_vram_gb_max,method,ms_per_query_t2i,ms_per_query_i2t,note
+E1,1705472,2.2,0.195,E1 InfoNCE,0.2405,0.2122,frozen ResNet-50 + BERT features precomputed (step 02); query passes through a tower
+E2,1705472,2.87,0.195,E2 Triplet (hardest negative),0.2211,0.2093,frozen ResNet-50 + BERT features precomputed (step 02); query passes through a tower
+E3,2230785,8.9,0.619,E3 E1 + concat-MLP re-ranker,0.6225,0.588,"as E1, plus 10 MLP scores per query"
+E4,0,0.0,,E4 CLIP ViT-B/32 zero-shot (reference),0.057,0.0693,scoring only from precomputed CLIP embeddings; CLIP encoding peak VRAM 0.881 GB (step 05)

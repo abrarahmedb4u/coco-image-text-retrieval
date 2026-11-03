@@ -1,0 +1,5 @@
+code,n_male,n_female,R@5_male,R@5_female,gap_male_minus_female,ci95_low,ci95_high,ci_excludes_zero
+E1,451,201,58.39,64.34,-5.96,-12.54,1.14,False
+E2,451,201,56.98,61.03,-4.04,-10.83,2.59,False
+E3,451,201,54.32,62.02,-7.7,-14.27,-1.38,True
+E4,451,201,82.26,93.03,-10.77,-15.64,-5.51,True

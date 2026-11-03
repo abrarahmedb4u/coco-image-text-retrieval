@@ -1,0 +1,58 @@
+{
+  "n_images": 5000,
+  "n_unreadable_images": 0,
+  "unreadable_images": [],
+  "n_images_size_differs_from_metadata": 0,
+  "image_modes": {
+    "RGB": 4990,
+    "L": 10
+  },
+  "image_width": {
+    "mean": 573.75,
+    "median": 640.0,
+    "std": 93.99,
+    "min": 200.0,
+    "max": 640.0
+  },
+  "image_height": {
+    "mean": 483.54,
+    "median": 480.0,
+    "std": 98.76,
+    "min": 145.0,
+    "max": 640.0
+  },
+  "n_captions_raw": 25014,
+  "captions_per_image_raw": {
+    "5": 4987,
+    "6": 12,
+    "7": 1
+  },
+  "caption_words_raw": {
+    "mean": 10.44,
+    "median": 10.0,
+    "std": 2.33,
+    "min": 7.0,
+    "max": 50.0
+  },
+  "n_captions_removed": 18,
+  "removed_by_reason": {
+    "duplicate within same image": 14,
+    "matches 'there is no image here'": 4
+  },
+  "n_captions_kept": 24996,
+  "caption_words_kept": {
+    "mean": 10.44,
+    "median": 10.0,
+    "std": 2.33,
+    "min": 7.0,
+    "max": 50.0
+  },
+  "n_caption_texts_shared_by_2plus_images": 133,
+  "n_captions_whose_text_appears_on_another_image": 363,
+  "n_test_captions_whose_text_appears_on_another_test_image": 12,
+  "n_images_dropped_before_split": 0,
+  "split_seed": 0,
+  "split_image_overlap_count": 0,
+  "seconds_load": 7.6,
+  "seconds_scan": 23.7
+}

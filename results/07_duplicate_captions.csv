@@ -1,0 +1,9 @@
+code,duplicate_text,n_queries,R@1,R@5,R@10
+E1,text shared with another test image,12,5.56,38.89,72.22
+E1,unique text,2486,27.0,62.87,78.92
+E2,text shared with another test image,12,13.89,38.89,63.89
+E2,unique text,2486,25.1,60.63,76.24
+E3,text shared with another test image,12,8.33,30.56,72.22
+E3,unique text,2486,21.83,59.16,78.92
+E4,text shared with another test image,12,16.67,33.33,50.0
+E4,unique text,2486,56.68,87.13,94.93

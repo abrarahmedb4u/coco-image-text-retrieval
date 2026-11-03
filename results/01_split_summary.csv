@@ -1,0 +1,4 @@
+split,n_images,n_captions,captions_per_image_mean,caption_words_mean
+train,4000,19999,5.0,10.44
+val,500,2499,4.998,10.44
+test,500,2498,4.996,10.41

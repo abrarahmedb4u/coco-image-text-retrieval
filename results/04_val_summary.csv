@@ -1,0 +1,3 @@
+method,n_seeds,val_i2t_R@1_mean,val_i2t_R@1_std,val_i2t_R@5_mean,val_i2t_R@5_std,val_i2t_R@10_mean,val_i2t_R@10_std,val_i2t_MRR_mean,val_i2t_MRR_std,val_t2i_R@1_mean,val_t2i_R@1_std,val_t2i_R@5_mean,val_t2i_R@5_std,val_t2i_R@10_mean,val_t2i_R@10_std,val_t2i_MRR_mean,val_t2i_MRR_std,val_rsum_mean,val_rsum_std
+E1 InfoNCE (no re-ranking),3,37.067,0.987,70.333,0.808,82.467,0.833,0.516,0.008,27.303,1.06,65.657,0.96,81.137,0.543,0.442,0.008,363.963,4.445
+E3 E1 + concat-MLP re-ranker,3,34.267,1.724,69.867,0.808,82.467,0.833,0.497,0.008,22.677,2.752,62.333,2.524,81.137,0.543,0.403,0.026,352.747,7.437

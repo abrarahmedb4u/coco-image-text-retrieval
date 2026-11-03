@@ -1,0 +1,26 @@
+{
+  "model": "openai/clip-vit-base-patch32",
+  "training": "none (zero-shot)",
+  "preprocessing": "CLIP's own image processor (resize 224, centre crop, CLIP mean/std)",
+  "val_n_images": 500,
+  "val_n_captions": 2499,
+  "val_encode_seconds": 39.7,
+  "val_peak_vram_gb": 0.88,
+  "test_n_images": 500,
+  "test_n_captions": 2498,
+  "test_encode_seconds": 12.8,
+  "test_peak_vram_gb": 0.881,
+  "val_metrics": {
+    "i2t_R@1": 78.8,
+    "i2t_R@5": 94.4,
+    "i2t_R@10": 97.6,
+    "i2t_MRR": 0.8553,
+    "i2t_median_rank": 1.0,
+    "t2i_R@1": 60.22,
+    "t2i_R@5": 87.68,
+    "t2i_R@10": 95.12,
+    "t2i_MRR": 0.7216,
+    "t2i_median_rank": 1.0,
+    "rsum": 513.82
+  }
+}

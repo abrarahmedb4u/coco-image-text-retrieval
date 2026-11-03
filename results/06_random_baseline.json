@@ -1,0 +1,17 @@
+{
+  "n_test_images": 500,
+  "n_test_captions": 2498,
+  "note": "expected recall (%) for random ranking; i2t assumes 5 captions per image",
+  "recall_percent": {
+    "t2i_R@1": 0.2,
+    "i2t_R@1": 0.2,
+    "t2i_R@5": 1.0,
+    "i2t_R@5": 1.0,
+    "t2i_R@10": 2.0,
+    "i2t_R@10": 1.99
+  },
+  "proposal_targets_percent": {
+    "R@1": 10.0,
+    "R@5": 25.0
+  }
+}

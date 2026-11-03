@@ -1,0 +1,23 @@
+{
+  "device": "cuda",
+  "image_model": "torchvision resnet50 (IMAGENET1K_V2), fc removed",
+  "text_model": "bert-base-uncased, mean over non-padding tokens of last layer",
+  "fp16_autocast": true,
+  "n_images": 5000,
+  "image_feature_dim": 2048,
+  "n_captions": 24996,
+  "text_feature_dim": 768,
+  "max_tokens": 40,
+  "n_captions_truncated": 8,
+  "caption_tokens_max": 59,
+  "seconds_image_extraction": 52.5,
+  "seconds_text_extraction": 30.6,
+  "images_per_second": 95.2,
+  "captions_per_second": 818.1,
+  "peak_vram_gb_resnet50": 0.461,
+  "peak_vram_gb_bert": 0.847,
+  "any_nan_image": false,
+  "any_nan_text": false,
+  "image_feature_norm_mean": 12.75,
+  "text_feature_norm_mean": 9.979
+}

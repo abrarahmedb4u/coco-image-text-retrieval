@@ -1,0 +1,7 @@
+method,seed,val_i2t_R@1,val_i2t_R@5,val_i2t_R@10,val_i2t_MRR,val_i2t_median_rank,val_t2i_R@1,val_t2i_R@5,val_t2i_R@10,val_t2i_MRR,val_t2i_median_rank,val_rsum,best_epoch,train_seconds,n_train_positive_pairs,n_train_hard_negative_pool,n_negatives_per_epoch,n_parameters,peak_vram_gb
+E1 InfoNCE (no re-ranking),0,36.6,70.8,83.4,0.5137,3.0,27.29,66.15,81.47,0.4447,3.0,365.71,,,,,,,
+E3 E1 + concat-MLP re-ranker,0,34.6,70.0,83.4,0.4989,3.0,24.81,64.19,81.47,0.4206,4.0,358.47,7.0,6.9,19999.0,186902.0,59997.0,525313.0,0.614
+E1 InfoNCE (no re-ranking),1,38.2,70.8,82.2,0.5254,2.0,28.37,66.27,81.43,0.4485,3.0,367.27,,,,,,,
+E3 E1 + concat-MLP re-ranker,1,35.8,69.0,82.2,0.5036,3.0,23.65,63.35,81.43,0.4147,4.0,355.43,4.0,6.5,19999.0,186476.0,59997.0,525313.0,0.619
+E1 InfoNCE (no re-ranking),2,36.4,69.4,81.8,0.5097,3.0,26.25,64.55,80.51,0.4327,3.0,358.91,,,,,,,
+E3 E1 + concat-MLP re-ranker,2,32.4,70.6,81.8,0.4873,3.0,19.57,59.46,80.51,0.3733,4.0,344.34,10.0,6.7,19999.0,192106.0,59997.0,525313.0,0.619
